@@ -11,8 +11,8 @@ fn deploy_contract(name: felt252) -> ContractAddress {
 }
 
 #[test]
-fn test_increase_balance() {
-    let contract_address = deploy_contract('HelloStarknet');
+fn test_setmessage() {
+    let contract_address = deploy_contract('Transactions');
 
     let safe_dispatcher = ITransactionsSafeDispatcher { contract_address };
 
@@ -27,7 +27,7 @@ fn test_increase_balance() {
 
 #[test]
 fn test_cannot_increase_balance_with_zero_value() {
-    let contract_address = deploy_contract('HelloStarknet');
+    let contract_address = deploy_contract('Transactions');
 
     let safe_dispatcher = ITransactionsSafeDispatcher { contract_address };
 
