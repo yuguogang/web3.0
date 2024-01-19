@@ -1,0 +1,157 @@
+[
+  {
+    "type": "impl",
+    "name": "TransactionsImpl",
+    "interface_name": "starknet_contract::ITransactions"
+  },
+  {
+    "type": "struct",
+    "name": "core::integer::u256",
+    "members": [
+      {
+        "name": "low",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "high",
+        "type": "core::integer::u128"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "starknet_contract::TransferStruct",
+    "members": [
+      {
+        "name": "sender",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "receiver",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "message",
+        "type": "core::felt252"
+      },
+      {
+        "name": "timestamp",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "keyword",
+        "type": "core::felt252"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "core::array::Span::<starknet_contract::TransferStruct>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<starknet_contract::TransferStruct>"
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "starknet_contract::ITransactions",
+    "items": [
+      {
+        "type": "function",
+        "name": "addToBlockchain",
+        "inputs": [
+          {
+            "name": "receiver",
+            "type": "core::starknet::contract_address::ContractAddress"
+          },
+          {
+            "name": "amount",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "message",
+            "type": "core::felt252"
+          },
+          {
+            "name": "keyword",
+            "type": "core::felt252"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "getAllTransactions",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "core::array::Span::<starknet_contract::TransferStruct>"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getTransactionCount",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "core::integer::u128"
+          }
+        ],
+        "state_mutability": "view"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "starknet_contract::Transactions::Transfer",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "from",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "key"
+      },
+      {
+        "name": "receiver",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "message",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "keyword",
+        "type": "core::felt252",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "starknet_contract::Transactions::Event",
+    "kind": "enum",
+    "variants": [
+      {
+        "name": "Transfer",
+        "type": "starknet_contract::Transactions::Transfer",
+        "kind": "nested"
+      }
+    ]
+  }
+]
